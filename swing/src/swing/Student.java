@@ -341,7 +341,7 @@ public class Student {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.DARK_GRAY);
-		panel_2.setBounds(10, 446, 874, 157);
+		panel_2.setBounds(10, 446, 874, 98);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -369,14 +369,46 @@ public class Student {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.DARK_GRAY);
-		panel_3.setBounds(10, 614, 864, 125);
+		panel_3.setBounds(0, 555, 864, 125);
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
 		JButton button_1 = new JButton("Add Report");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				double a[]=new double[20];
+				a[0]=Double.parseDouble(textField_6.getText());
+				a[1]=Double.parseDouble(textField_7.getText());
+				a[2]=Double.parseDouble(textField_8.getText());
+				a[3]=Double.parseDouble(textField_9.getText());
+				a[4]=Double.parseDouble(textField_10.getText());
+				a[5]=Double.parseDouble(textField_11.getText());
+				a[6]=Double.parseDouble(textField_12.getText());
+				a[7]=Double.parseDouble(textField_13.getText());
+				a[8]=(a[0]+a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7]);
+				a[9]=(a[0]+a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7])/8;
+				String total=String.format("%.2f",a[8]);
+				textField_3.setText(total);
+				String avg=String.format("%.2f",a[9]);
+				textField_4.setText(avg);
+				if(a[8]>700)
+				{
+					textField_5.setText("1");
+				}
+				else if(a[8]>600&&a[8]<700)
+				{
+					textField_5.setText("2");
+				}
+				else if(a[8]<600&&a[8]>500) {
+					textField_5.setText("3");
+					}
+				else if(a[8]<500&&a[8]>400) {
+					textField_5.setText("5");
+					}
+				else {
+					textField_5.setText("6");
+				}
+			    
 				DefaultTableModel model=(DefaultTableModel) table_1.getModel();
 				model.addRow(new String[] {
 				textField.getText(),
@@ -394,38 +426,8 @@ public class Student {
 				textField_5.getText(),
 									
 		});
-			double a[]=new double[20];
-			a[0]=Double.parseDouble(textField_6.getText());
-			a[1]=Double.parseDouble(textField_7.getText());
-			a[2]=Double.parseDouble(textField_8.getText());
-			a[3]=Double.parseDouble(textField_9.getText());
-			a[4]=Double.parseDouble(textField_10.getText());
-			a[5]=Double.parseDouble(textField_11.getText());
-			a[6]=Double.parseDouble(textField_12.getText());
-			a[7]=Double.parseDouble(textField_13.getText());
-			a[8]=(a[0]+a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7]);
-			a[9]=(a[0]+a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7])/8;
-			String total=String.format("%.2f",a[8]);
-			textField_3.setText(total);
-			String avg=String.format("%.2f",a[9]);
-			textField_4.setText(avg);
-			if(a[8]>700)
-			{
-				textField_5.setText("1");
-			}
-			else if(a[8]>600&&a[8]<700)
-			{
-				textField_5.setText("2");
-			}
-			else if(a[8]<600&&a[8]>500) {
-				textField_5.setText("3");
-				}
-			else if(a[8]<500&&a[8]>400) {
-				textField_5.setText("5");
-				}
-			else {
-				textField_5.setText("6");
-			}
+			
+			
 		    
 			}
 		});
@@ -437,13 +439,12 @@ public class Student {
 		JButton button_2 = new JButton("Delete");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DefaultTableModel model=(DefaultTableModel)table.getModel();
-				int i=table.getSelectedRow();
-				if(i>0)
-				{
-					
-					model.removeRow(i);
-				}
+				
+				
+				DefaultTableModel model=(DefaultTableModel)table_1.getModel();
+				int row=table_1.getSelectedRow();
+		          model.removeRow(row);
+				
 			}
 		});
 		button_2.setForeground(Color.RED);

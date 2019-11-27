@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -189,7 +190,7 @@ public class Ticket {
 		frame.getContentPane().add(separator_2);
 		
 		panel = new JPanel();
-		panel.setBounds(318, 60, 435, 372);
+		panel.setBounds(318, 54, 435, 372);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -305,7 +306,7 @@ public class Ticket {
 		panel.add(btnConfirm);
 		
 		lblTicketDetails = new JLabel("Ticket Details");
-		lblTicketDetails.setBounds(164, 11, 73, 14);
+		lblTicketDetails.setBounds(164, 11, 122, 14);
 		panel.add(lblTicketDetails);
 		
 		JButton btnTotal = new JButton("Total");
@@ -372,10 +373,42 @@ public class Ticket {
 		frame.getContentPane().add(btnTotal);
 		
 		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+				chckbxNewCheckBox.setSelected(false);
+				chckbxSingleTicket.setSelected(false);
+				chckbxAdult.setSelected(false);
+				chckbxFirstClass.setSelected(false);
+				chckbxAc.setSelected(false);
+				chckbxSleeper.setSelected(false);
+				chckbxChild.setSelected(false);
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				textField_5.setText("");
+				textField_6.setText("");
+				textField_7.setText("");
+				textField_8.setText("");
+				textField_9.setText("");
+				textField_10.setText("");
+				textField_11.setText("");
+								
+			}
+		});
 		btnReset.setBounds(113, 409, 89, 23);
 		frame.getContentPane().add(btnReset);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame=new JFrame("Exit");
+				if(JOptionPane.showConfirmDialog(frame,"Confirm","Exit",JOptionPane.YES_OPTION)==JOptionPane.YES_NO_OPTION) {
+			System.exit(0);
+			}
+			}
+		});
 		btnExit.setBounds(219, 409, 89, 23);
 		frame.getContentPane().add(btnExit);
 		
@@ -394,7 +427,7 @@ public class Ticket {
 				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
-		table.setBounds(10, 11, 717, 35);
+		table.setBounds(10, 11, 717, 86);
 		panel_1.add(table);
 	}
 }
